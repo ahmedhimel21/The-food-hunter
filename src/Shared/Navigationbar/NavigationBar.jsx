@@ -7,9 +7,12 @@ const NavigationBar = () => {
       <div className="navbar bg-white shadow-lg p-3">
         <div className="flex-1">
           <Link to="/">
-            <button className="btn  btn-secondary normal-case text-xl">
+            {/* <button className="btn  btn-secondary normal-case text-xl">
               The food Hunter
-            </button>
+            </button> */}
+            <h1 className="text-2xl font-bold">
+            The <span className="text-secondary">Food</span> Hunter
+            </h1>
           </Link>
         </div>
         <div className="flex-none gap-4">
