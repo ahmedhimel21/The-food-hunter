@@ -6,6 +6,8 @@ import Blogs from "../pages/Blogs/Blogs";
 import LoginLayouts from "../Layouts/LoginLayouts";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import ErrorPageLayout from "../Layouts/ErrorPageLayout";
 
 
 const router = createBrowserRouter([
@@ -36,7 +38,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>
-      }
+      },
     ]
   },
   {
@@ -48,7 +50,7 @@ const router = createBrowserRouter([
         element: <Blogs></Blogs>
       }
     ]
-  }
+  },
 ])
 
 export default router;
