@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { sendEmailVerification, updateProfile } from "firebase/auth";
+import {  updateProfile } from "firebase/auth";
 import { AuthContext } from "../../Provider/Authproviders";
 
 const Register = () => {
@@ -12,6 +12,7 @@ const Register = () => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
+    const photoUrl = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
     const confirm = form.confirmPassword.value;
@@ -21,7 +22,7 @@ const Register = () => {
     } else if (!/(?=.*[!@#$&*])/.test(password)) {
       setError("Please add a special characters");
       return;
-    } else if (password.length < 8) {
+    } else if (password.length < 6) {
       setError("Please add at least 8 Characters");
       return;
     } else if (password !== confirm) {
@@ -32,10 +33,11 @@ const Register = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-        setSuccess("User has been created successfully");
-        handleEmailVerification(result.user);
         setError("");
         form.reset();
+        setSuccess("User has been created successfully");
+        // handleEmailVerification(result.user);
+        updateUserData(result.user,name,photoUrl);
       })
       .catch((error) => {
         console.log(error);
@@ -57,7 +59,7 @@ const Register = () => {
         setSuccess("");
       });
   };
-  // // email verification
+  // email verification
   // const handleEmailVerification = (user) =>{
   //   sendEmailVerification(user)
   //   .then(r =>{
@@ -65,6 +67,17 @@ const Register = () => {
   //   })
   //   alert('Please verify your email Address')
   // }
+  const updateUserData =(user,name,photoURL) =>{
+    updateProfile(user,{
+      displayName:name, photoURL: photoURL
+    })
+    .then(()=>{
+      setSuccess('user profile updated')
+    })
+    .catch(error =>{
+      setError(error.message)
+    })
+  }
   return (
     <>
       <div className="hero min-h-screen bg-base-200">
@@ -93,7 +106,7 @@ const Register = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Photo URL</span>
+                  <span className="label-text">Photo</span>
                 </label>
                 <input
                   type="text"
@@ -121,7 +134,7 @@ const Register = () => {
                 <input
                   type={show ? "text" : "password"}
                   name="password"
-                  placeholder="Create strong password"
+                  placeholder="one uppercase, special and 6 characters"
                   className="input input-bordered"
                   required
                 />
@@ -140,7 +153,7 @@ const Register = () => {
                 <input
                   type={show ? "text" : "password"}
                   name="confirmPassword"
-                  placeholder="Create strong password"
+                  placeholder="one uppercase, special and 6 characters"
                   className="input input-bordered"
                   required
                 />
@@ -150,6 +163,8 @@ const Register = () => {
                   <span className="cursor-pointer	">Show password!</span>
                 )}
               </div>
+              <p className="text-red-600">{error}</p>
+              <p className="text-green-600">{success}</p>
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Sign Up</button>
               </div>

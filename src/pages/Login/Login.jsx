@@ -22,9 +22,9 @@ const Login = () => {
         const loggedUser = r.user;
         console.log(loggedUser);
         navigate(from, { replace: true });
+        setError("");
         form.reset();
         setSuccess("Login Successfully");
-        setError("");
       })
       .catch((error) => {
         console.log(error);
@@ -96,7 +96,7 @@ const Login = () => {
                   name="password"
                 />
                 <p
-                  className="mt-5 font-bold text-md"
+                  className="mt-5 font-semibold text-md"
                   onClick={() => setShow(!show)}
                 >
                   {show ? (
@@ -113,6 +113,7 @@ const Login = () => {
                     Forgot password?
                   </a>
                 </label>
+                <p className="text-red-600">{error}</p>
               </div>
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Login</button>
