@@ -1,14 +1,14 @@
 import React from 'react';
 import NavigationBar from '../Shared/Navigationbar/NavigationBar';
-import Blogs from '../pages/Blogs/Blogs';
+import { Outlet } from 'react-router-dom';
 
-const BlogsLayout = () => {
+const LoginLayouts = () => {
   return (
     <div>
       <NavigationBar></NavigationBar>
-      <Blogs></Blogs>
+      <Outlet></Outlet>
     </div>
   );
 };
 
-export default BlogsLayout;
+export default LoginLayouts;
