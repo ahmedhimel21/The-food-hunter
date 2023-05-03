@@ -12,13 +12,13 @@ const SingleChefCards = ({ singleData }) => {
           <img src={img} alt="Chef" className="rounded-lg h-[599px] w-full" />
         </figure>
         <div className="card-body">
-          <p className="flex justify-between items-center">
+          <div className="flex justify-between items-center">
             <h2 className="card-title">{chefName}</h2>
             <span className="flex items-center">
               <EyeIcon className="w-10"> </EyeIcon>
               {like}
             </span>
-          </p>
+          </div>
           <p className="text-md font-semibold">Experience: {experience}</p>
           <p className="text-md font-semibold">
             Numbers of Recipes:{" "}
