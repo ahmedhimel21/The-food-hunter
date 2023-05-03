@@ -31,7 +31,7 @@ const Home = () => {
           <Lottie animationData={carousel} loop={true} />
         </div>
       </div>
-      <h1 className="text-3xl font-bold text-center">Our Chef</h1>
+      <h1 className="text-3xl font-bold text-center">Our Chefs</h1>
       <div className="grid grid-cols-1 md:gird-cols-2 lg:grid-cols-2 gap-5 mx-5 my-7">
         {chefData.slice(0, showAll ? 6 : 4).map((singleData) => (
           <SingleChefCards
