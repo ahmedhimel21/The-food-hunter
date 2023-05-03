@@ -2,8 +2,8 @@ import React from "react";
 import { EyeIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
 
+
 const SingleChefCards = ({ singleData }) => {
-  console.log(singleData);
   const { img, chefName, experience, recipe, like,id } = singleData;
   return (
     <>

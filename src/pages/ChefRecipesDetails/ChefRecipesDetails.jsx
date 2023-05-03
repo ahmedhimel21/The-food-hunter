@@ -3,10 +3,16 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const ChefRecipesDetails = ({ recipe }) => {
-  const { ingredients, name, rating, steps } = recipe;
-  const toastifyAlert = () => {
+  const { ingredients, name, rating, steps,_id } = recipe;
+  let btnShow = document.querySelector('button')
+  const toastifyAlert = (_id) => {
+    if (_id) {
+      btnShow.disabled = true;
+    }
+    else{
+      btnShow.disabled = false;
+    }
     toast("Added to favourite");
-    disabled = true
   };
   return (
     <div>
@@ -31,7 +37,8 @@ const ChefRecipesDetails = ({ recipe }) => {
           </p>
           <div className="card-actions justify-end">
             <button
-              onClick={toastifyAlert}
+              id="button"
+              onClick={() => toastifyAlert(_id)}
               className="btn btn-secondary"
             >
               Add to Favorite
