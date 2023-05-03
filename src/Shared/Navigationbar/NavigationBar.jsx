@@ -3,18 +3,18 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/Authproviders";
 
 const NavigationBar = () => {
-  const { user,logOut } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   console.log(user);
 
-  const handleSignOut = () =>{
+  const handleSignOut = () => {
     logOut()
-    .then(result =>{
-      console.log(result);
-    })
-    .catch(error =>{
-      console.error(error);
-    })
-  }
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
   return (
     <>
       <div className="navbar bg-white shadow-lg p-3">
@@ -48,17 +48,22 @@ const NavigationBar = () => {
                 <>
                   <label
                     tabIndex={0}
-                    className="btn btn-ghost btn-circle avatar">
+                    className="btn btn-ghost btn-circle avatar"
+                  >
                     <div className="w-10 rounded-full">
-                  <img src={user?.photoURL} />
+                      <img
+                        src={user?.photoURL}
+                        title={user?.displayName}
+                      />
                     </div>
                   </label>
                   <ul
                     tabIndex={0}
-                    className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
-                      <li>
-                        <a>{user.displayName}</a>
-                      </li>
+                    className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                  >
+                    <li>
+                      <a>{user?.displayName}</a>
+                    </li>
                     <li>
                       <a onClick={handleSignOut}>Logout</a>
                     </li>
