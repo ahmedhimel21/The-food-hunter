@@ -7,7 +7,6 @@ import LoginLayouts from "../Layouts/LoginLayouts";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
-import ErrorPageLayout from "../Layouts/ErrorPageLayout";
 import ChefRecipesLayout from "../Layouts/ChefRecipesLayout";
 import ChefRecipes from "../pages/ChefRecepes/ChefRecipes";
 import PrivateRoutes from "./PrivateRoutes";
@@ -66,6 +65,10 @@ const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path: '*',
+    element: <ErrorPage></ErrorPage>
+  }
 ])
 
 export default router;

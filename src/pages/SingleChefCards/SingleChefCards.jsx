@@ -7,7 +7,7 @@ const SingleChefCards = ({ singleData }) => {
   const { img, chefName, experience, recipe, like,id } = singleData;
   return (
     <>
-      <div className="card w-full bg-base-100 shadow-xl p-5">
+      <div className="card w-full bg-base-200 shadow-xl p-5">
         <figure>
           <img src={img} alt="Chef" className="rounded-lg h-[599px] w-full" />
         </figure>
