@@ -1,7 +1,8 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import ChefRecipesDetails from "../ChefRecipesDetails/ChefRecipesDetails";
-import LazyLoad from 'react-lazy-load'
+import LazyLoad from "react-lazy-load";
+import { EyeIcon } from "@heroicons/react/24/solid";
 
 const ChefRecipes = () => {
   const chefRecipes = useLoaderData();
@@ -13,11 +14,11 @@ const ChefRecipes = () => {
         <div className="card card-side bg-base-100 shadow-xl mx-5 p-5">
           <figure>
             <LazyLoad>
-            <img
-              src={img}
-              alt="chef_picture"
-              className="rounded-md h-[599px]"
-            />
+              <img
+                src={img}
+                alt="chef_picture"
+                className="rounded-md h-[599px]"
+              />
             </LazyLoad>
           </figure>
           <div className="card-body">
@@ -32,8 +33,9 @@ const ChefRecipes = () => {
               are <br /> prepared in a timely manner. Also, you should be <br />{" "}
               familiar with sanitation regulations. <br />
             </p>
-            <p className="text-xl font-bold ">
-              <span className="text-md font-bold">Likes: </span> {like}
+            <p className="text-xl font-bold flex items-center space-x-3">
+              <span className="text-md font-bold">Likes: </span>
+              <EyeIcon className="w-7"> </EyeIcon> {like}
             </p>
             <p className="text-xl font-bold">
               <span className=" text-md font-bold">Number of Recipes: </span>{" "}
