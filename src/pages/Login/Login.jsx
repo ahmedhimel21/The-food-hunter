@@ -2,9 +2,11 @@ import React, { useContext, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { AuthContext } from "../../Provider/Authproviders";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
-  const {signInWithGoogle, signIn, auth} = useContext(AuthContext);
+  const { signInWithGoogle, signIn, auth } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [show, setShow] = useState(false);
@@ -46,7 +48,9 @@ const Login = () => {
   const handleResetPassword = (e) => {
     const email = emailRef.current.value;
     if (!email) {
-      alert("please provide your email address to reset password");
+      toast("please provide your email address to reset password", {
+        autoClose: 500,
+      });
       return;
     }
     sendPasswordResetEmail(auth, email)
@@ -112,6 +116,7 @@ const Login = () => {
                   >
                     Forgot password?
                   </a>
+                  <ToastContainer />
                 </label>
                 <p className="text-red-600">{error}</p>
               </div>
