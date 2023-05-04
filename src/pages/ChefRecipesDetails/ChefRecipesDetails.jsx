@@ -11,7 +11,7 @@ const ChefRecipesDetails = ({ recipe }) => {
   };
   return (
     <div>
-      <div className="card w-full bg-base-100 shadow-xl">
+      <div className="card w-full h-[650px] bg-base-100 shadow-xl">
         <div className="card-body">
           <h2 className="card-title">{name}</h2>
           <p>
