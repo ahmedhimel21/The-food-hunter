@@ -1,12 +1,17 @@
 import React from "react";
+import ReactToPdf from "react-to-pdf";
 
 const Blogs = () => {
+  const ref = React.createRef();
   return (
     <>
       <h1 className="text-center text-3xl font-bold text-purple-500 underline underline-offset-2">
         React Blogs
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5 mx-6 mt-8">
+      <div
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5 mx-6 mt-8"
+        ref={ref}
+      >
         <div className="border border-gray-200 shadow-md rounded-md p-5">
           <h1 className="text-xl font-bold mb-5">
             What is the differences between uncontrolled and controlled
@@ -68,6 +73,21 @@ const Blogs = () => {
             again and again while rendering the whole code
           </p>
         </div>
+      </div>
+      <div className="text-center my-6">
+        <ReactToPdf
+          targetRef={ref}
+          filename="blogs.pdf"
+          x={10}
+          y={10}
+          scale={0.5}
+        >
+          {({ toPdf }) => (
+            <button onClick={toPdf} class="btn btn-secondary">
+              Download Pdf
+            </button>
+          )}
+        </ReactToPdf>
       </div>
     </>
   );

@@ -3,16 +3,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const ChefRecipesDetails = ({ recipe }) => {
-  const { ingredients, name, rating, steps,_id } = recipe;
-  let btnShow = document.querySelector('button')
-  const toastifyAlert = (_id) => {
-    if (_id) {
-      btnShow.disabled = true;
-    }
-    else{
-      btnShow.disabled = false;
-    }
-    toast("Added to favourite");
+  const { ingredients, name, rating, steps } = recipe;
+  const [disable,setDisable] = useState(false);
+  const handleAddToFavoriteButton = () => {
+    toast.success('Added to favorite', {autoClose: 500})
+    setDisable(true)
   };
   return (
     <div>
@@ -37,8 +32,7 @@ const ChefRecipesDetails = ({ recipe }) => {
           </p>
           <div className="card-actions justify-end">
             <button
-              id="button"
-              onClick={() => toastifyAlert(_id)}
+              onClick={handleAddToFavoriteButton} disabled={disable}
               className="btn btn-secondary"
             >
               Add to Favorite
